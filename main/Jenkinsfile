@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+		build "PES1UG22CS661_1"
+                sh 'g++ hello.cpp -o hello_exec'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './hello_exec'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application.'
+            }
+        }
+    }
+    post {
+        failure {
+            echo 'Pipeline failed'
+        }
+    }
+}
+
