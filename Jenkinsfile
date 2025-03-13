@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'g++  -o hello_exec hello_task5.cpp'
+                sh 'g++ hello_task5.cpp -o hello_exec '
             }
         }
         stage('Test') {
