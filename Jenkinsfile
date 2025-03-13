@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build application') {
             steps {
-                sh 'g++  -o task5_1 mai  .cpp'  
+                sh 'g++  -o task5_1 main.cpp'  
             }
         }
         stage('Test application') {
