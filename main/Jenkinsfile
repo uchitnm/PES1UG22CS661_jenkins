@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'g++ hello.cpp -o hello_exec'
+                sh 'g++ hello_task5.cpp -o hello_exec'
             }
         }
         stage('Test') {
@@ -26,6 +26,9 @@ pipeline {
         failure {
             echo 'Pipeline failed'
         }
+	success{
+	    echo "Pipeline Successfully executed"
+}
     }
 }
 
