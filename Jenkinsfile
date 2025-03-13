@@ -1,33 +1,34 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout Code') {
+        stage('Clone repository') {
             steps {
-                git 'https://github.com/uchitnm/PES1UG22CS661_jenkins.git'
+                git branch: 'main',
+                    url: 'https://github.com/uchitnm/PES1UG22CS661_jenkins.git'
             }
         }
-        stage('Build') {
+        stage('Build application') {
             steps {
-                sh 'g++ hello_task5.cpp -o hello_exec '
+                sh 'g++ -o task5_1 main.cpp'  
             }
         }
-        stage('Test') {
+        stage('Test application') {
             steps {
-                sh './hello_exec'
+                sh './task5_1'  
             }
         }
-        stage('Deploy') {
+        stage('Deploy application') {
             steps {
-                echo 'Deploying application...'
+                echo 'Deploying application...'  
             }
         }
     }
     post {
         failure {
-            echo 'Pipeline failed'
+            echo 'Pipeline failed!' 
         }
-        success{
-            echo "Pipeline Successfully executed"
-}
+        success {
+            echo 'Pipeline executed successfully!'  
+        }
     }
 }
